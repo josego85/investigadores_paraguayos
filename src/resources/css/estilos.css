@@ -3,7 +3,13 @@
     width: 100%;
 }
 
-.center {
+/*
+ * Header index.html
+ */
+.header {
+    color: black;
     text-align: center;
-    font-size: 25px;
+    font-size: 20pt;
+    padding-top: 15px;
+    padding-bottom: 10px;
 }
