@@ -62,7 +62,11 @@ function loadMap()
             onEachFeature: onEachFeature,
             pointToLayer: function(feature, latlng)
             {
-                return L.marker(latlng, {icon: greenIcon});
+                return L.marker(latlng,
+                {
+                    title: feature.properties.name, 
+                    icon: greenIcon
+                });
 			}
 		}).addTo(map);
     });
