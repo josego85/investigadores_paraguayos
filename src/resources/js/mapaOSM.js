@@ -20,14 +20,10 @@ function loadMap()
             position: 'topleft'
         }
     });
- 
-    // Humanitarian Style.
-    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-    {
-        maxZoom: maxZoom,
-        attribution: 'Data \u00a9 <a href="http://www.openstreetmap.org/copyright">' +
-          'OpenStreetMap Contributors </a> Tiles \u00a9 HOT',
-    }).addTo(map);
+
+    // Stamen Maps. Layer Terrain.
+    var layer = new L.StamenTileLayer("terrain");
+    map.addLayer(layer);
 
     $.getJSON('datos/countries.geojson', function (geojson)
     {
@@ -37,13 +33,11 @@ function loadMap()
             {
                 return {
                     'weight': 1,
-                    'color': 'black',
-                    'fillColor': 'yellow'
+                    'color': 'black'
                 }
             }
         }).addTo(map);
     });
-
 
     var layer_scientist;
     var greenIcon = new L.Icon(
