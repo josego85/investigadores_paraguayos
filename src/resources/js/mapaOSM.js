@@ -2,7 +2,6 @@ var map = null;
 
 function loadMap()
 {
-    // Asuncion - Paraguay.
     var lon = 5.0;
     var lat = 20.0;
     var zoom = 2;
