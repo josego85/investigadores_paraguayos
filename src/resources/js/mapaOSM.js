@@ -22,22 +22,28 @@ function loadMap()
     });
 
     // Stamen Maps. Layer Terrain.
-    var layer = new L.StamenTileLayer("terrain");
-    map.addLayer(layer);
+    // var layer = new L.StamenTileLayer("terrain");
+    // map.addLayer(layer);
 
-    $.getJSON('datos/countries.geojson', function (geojson)
+    // Tile OSM default.
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
-        L.geoJson(geojson,
-        {
-            style: function (feature)
-            {
-                return {
-                    'weight': 1,
-                    'color': 'black'
-                }
-            }
-        }).addTo(map);
-    });
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // $.getJSON('datos/countries.geojson', function (geojson)
+    // {
+    //     L.geoJson(geojson,
+    //     {
+    //         style: function (feature)
+    //         {
+    //             return {
+    //                 'weight': 1,
+    //                 'color': 'black'
+    //             }
+    //         }
+    //     }).addTo(map);
+    // });
 
     var layer_scientist;
     var greenIcon = new L.Icon(
