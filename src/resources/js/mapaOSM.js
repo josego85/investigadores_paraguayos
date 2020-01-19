@@ -3,38 +3,38 @@ var map = null;
 function loadMap()
 {
     // Asuncion - Paraguay.
-    var lon = 0;
-    var lat = 10;
-    var zoom = 3;
+    var lon = 5.0;
+    var lat = 20.0;
+    var zoom = 2;
+    var minZoom = 2;
+    var maxZoom = 5;
 
     map = new L.map('map-container',
     {
-       minZoom: 0,
-       maxZoom: 12,
-       center: [lat, lon],
-       zoom: zoom
+        center: [lat, lon],
+        minZoom: minZoom,
+        zoom: zoom,
+        scrollWheelZoom: false
     });
  
-
     // Humanitarian Style.
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
     {
-        maxZoom: 18,
+        maxZoom: maxZoom,
         attribution: 'Data \u00a9 <a href="http://www.openstreetmap.org/copyright">' +
-          'OpenStreetMap Contributors </a> Tiles \u00a9 HOT'
+          'OpenStreetMap Contributors </a> Tiles \u00a9 HOT',
     }).addTo(map);
 
-    var style_scientist =
+    var layer_scientist;
+    var yellowIcon = new L.Icon(
     {
-	    radius: 8,
-        fillColor: "#ff7800",
-        color: "#000",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 0.8
-	};
-
-	var layer_scientist;
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
     $.getJSON("datos/scientist_py.geojson", function(data_scientist)
     {
         layer_scientist = L.geoJson(data_scientist,
@@ -42,7 +42,7 @@ function loadMap()
             onEachFeature: onEachFeature,
             pointToLayer: function(feature, latlng)
             {
-			    return L.circleMarker(latlng, style_scientist);
+                return L.marker(latlng, {icon: yellowIcon});
 			}
 		}).addTo(map);
     });
