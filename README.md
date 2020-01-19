@@ -10,7 +10,7 @@ Ejemplo de Investigadores Paraguayos
 ![Screenshot](screenshots/fullscreen.png)
 
 Levantar en sitio en cualquier server (Apache, etc.)
-[Sitio de ejemplo] (http://investigadoresparaguayos.proyectosbeta.net/)
+[Sitio de ejemplo] (https://investigadoresparaguayos.proyectosbeta.net/)
 
 Tecnologías utilizadas:
 - JavaScript (Leaflet, JQuery)
