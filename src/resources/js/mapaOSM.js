@@ -25,10 +25,26 @@ function loadMap()
           'OpenStreetMap Contributors </a> Tiles \u00a9 HOT',
     }).addTo(map);
 
-    var layer_scientist;
-    var yellowIcon = new L.Icon(
+    $.getJSON('datos/countries.geojson', function (geojson)
     {
-        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+        L.geoJson(geojson,
+        {
+            style: function (feature)
+            {
+                return {
+                    'weight': 1,
+                    'color': 'black',
+                    'fillColor': 'yellow'
+                }
+            }
+        }).addTo(map);
+    });
+
+
+    var layer_scientist;
+    var greenIcon = new L.Icon(
+    {
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
         iconSize: [25, 41],
         iconAnchor: [12, 41],
@@ -42,7 +58,7 @@ function loadMap()
             onEachFeature: onEachFeature,
             pointToLayer: function(feature, latlng)
             {
-                return L.marker(latlng, {icon: yellowIcon});
+                return L.marker(latlng, {icon: greenIcon});
 			}
 		}).addTo(map);
     });
