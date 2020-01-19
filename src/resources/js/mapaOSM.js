@@ -13,7 +13,12 @@ function loadMap()
         center: [lat, lon],
         minZoom: minZoom,
         zoom: zoom,
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
+        fullscreenControl: true,
+        fullscreenControlOptions:
+        {
+            position: 'topleft'
+        }
     });
  
     // Humanitarian Style.
